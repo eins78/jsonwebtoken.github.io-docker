@@ -1,0 +1,7 @@
+.git
+.gitignore
+node_modules/
+README.md
+CNAME
+.env.sample
+jwtio-debugger-source.zip
