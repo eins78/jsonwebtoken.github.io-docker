@@ -3,7 +3,9 @@ FROM node:16-alpine AS builder
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . ./
-RUN npm run build
+RUN --mount=type=secret,id=github_token \
+  GITHUB_TOKEN=$(cat /run/secrets/github_token) \
+  npm run build
 
 # runner
 FROM node:16-alpine AS app
